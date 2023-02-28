@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string("ref_id")->unique();
+            $table->foreignId('category_id');
             $table->string("title");
             $table->string("excerpt");
-            $table->string("author");
+//            $table->string("author");
             $table->text("body");
             $table->timestamp("published_at")->nullable();
             $table->timestamps();

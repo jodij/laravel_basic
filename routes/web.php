@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +30,12 @@ Route::get('about', function () {
 });
 
 Route::get('post', [PostController::class, 'index']);
-
 Route::get('post/{post:ref_id}', [PostController::class, 'show']);
+
+Route::get('categories/{category:ref_id}', function (Category $category) {
+    return view('category', [
+        'title' => $category->name,
+        'posts' => $category->posts,
+        'category' => $category->name
+    ]);
+});

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('container')
     <article>
-        <h2>{{ $post->title }}</h2>
-        <h5>{{ $post["author"] }}</h5>
-        <p>{!! $post["body"] !!}</p>
+        <h1 class="mb-5">{{ $post->title }}</h1>
+        <p> By. Jodi Jonathan in <a href="/categories/{{ $post->category->ref_id }}">{{ $post->category->name }}</a></p>
+        {!! $post["body"] !!}
     </article>
     <a href="/post"> Back to Posts</a>
 @endsection

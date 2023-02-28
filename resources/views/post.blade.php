@@ -7,3 +7,5 @@
     </article>
     <a href="/post"> Back to Posts</a>
 @endsection
+
+

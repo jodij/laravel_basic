@@ -5,7 +5,7 @@
         <div class="row">
             @foreach($categories as $category)
                 <div class="col-md-4">
-                    <a href="/categories/{{ $category->ref_id }}">
+                    <a href="/posts?category={{ $category->ref_id }}">
                         <div class="card text-bg-dark">
                             <img src="https://source.unsplash.com/random/500x400?{{ $category->name }}" class="card-img"
                                  alt="{{ $category->name }}">

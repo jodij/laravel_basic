@@ -9,17 +9,26 @@ class PostController extends Controller
 {
     public function index()
     {
+        $posts = Post::latest();
+        if (request('search')) {
+            $posts
+                ->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('body', 'like', '%' . request('search') . '%');
+        }
+
         return view('posts', [
-            'title' => 'Post',
-            'posts' => Post::all()
+            "title" => "All Posts",
+            "active" => "post",
+            "posts" => $posts->get() /* eager loading */
         ]);
     }
 
     public function show(Post $post)
     {
         return view('post', [
-            'title' => 'Post Detail',
-            'post' => $post
+            "title" => "Post Detail",
+            "active" => "post",
+            "post" => $post
         ]);
     }
 }

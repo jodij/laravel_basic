@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+//    use HasFactory, Sluggable;
 
 //    protected $fillable = ['title', 'excerpt', 'body'];
 
@@ -45,6 +46,25 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'ref_id';
+    }
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+//    public function sluggable(): array
+//    {
+//        return [
+//            'slug' => [
+//                'source' => 'title'
+//            ]
+//        ];
+//    }
 
 }
 

@@ -21,8 +21,17 @@
     @if($posts->count())
         <div class="container">
         <div class="card shadow mb-3">
-            <img src="https://source.unsplash.com/random/1200x400?{{ $posts[0]->category->name }}" class="card-img-top"
-                 alt="{{ $posts[0]->category->name }}">
+            @if($posts[0]->image)
+                <div style="max-height: 350px; overflow: hidden;">
+                    <img class="card-img-top"
+                         src="{{ asset('storage/' . $posts[0]->image) }}"
+                         alt="{{ $posts[0]->category->name }}">
+                </div>
+            @else
+                <img class="card-img-top"
+                     src="https://source.unsplash.com/random/1200x400?{{ $posts[0]->category->name }}"
+                     alt="{{ $posts[0]->category->name }}">
+            @endif
             <div class="card-body text-center">
                 <h3 class="card-title"><a class="text-decoration-none text-dark"
                                           href="/posts/{{ $posts[0]->ref_id }}">{{ $posts[0]->title  }}</a></h3>
@@ -51,8 +60,17 @@
                                 <a class="text-white text-decoration-none"
                                    href="/posts?category={{ $post->category->ref_id }}">{{ $post->category->name }}</a>
                             </div>
-                            <img src="https://source.unsplash.com/random/500x400?{{ $post->category->name }}"
-                                 class="card-img-top" alt="{{ $post->category->name }}">
+                            @if($post->image)
+                                <div style="max-height: 400px; overflow: hidden;">
+                                    <img class="card-img-top"
+                                         src="{{ asset('storage/' . $post->image) }}"
+                                         alt="{{ $post->category->name }}">
+                                </div>
+                            @else
+                                <img src="https://source.unsplash.com/random/500x400?{{ $post->category->name }}"
+                                     class="card-img-top" alt="{{ $post->category->name }}">
+                            @endif
+
                             <div class="card-body">
                                 <h5 class="card-title text-truncate"><a class="text-decoration-none"
                                                           href="/posts/{{ $post->ref_id }}">{{ $post['title']  }}</a>

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,25 +22,26 @@ class DatabaseSeeder extends Seeder
         */
 
         /* user initial data */
-        User::factory(5)->create();
-        /*User::create([
+        User::create([
             'name' => 'Jodi Jonathan',
+            'ref_id' => Str::uuid(),
             'email' => 'jonathan.tjhia@gmail.com',
             'password' => bcrypt('12345678')
-        ]);*/
+        ]);
+        User::factory(5)->create();
 
         /* category initial data */
         Category::create([
             'name' => 'Programming',
-            'ref_id' => 'd03c2128-b771-11ed-afa1-0242ac120002',
+            'ref_id' => Str::uuid(),
         ]);
         Category::create([
             'name' => 'Web Design',
-            'ref_id' => '5acf2db6-b773-11ed-afa1-0242ac120002',
+            'ref_id' => Str::uuid(),
         ]);
         Category::create([
             'name' => 'Personal',
-            'ref_id' => '5acf305e-b773-11ed-afa1-0242ac120002',
+            'ref_id' => Str::uuid(),
         ]);
 
         /* post initial data */

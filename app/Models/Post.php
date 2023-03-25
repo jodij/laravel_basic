@@ -17,8 +17,6 @@ class Post extends Model
 
     public function scopeFilter($query, array $filters)
     {
-
-
         $query->when($filters['category'] ?? false, function ($query, $category)
         {
             return $query->whereHas('category', function ($query) use ($category)
